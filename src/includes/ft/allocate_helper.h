@@ -18,20 +18,40 @@
 
 # include "allocate_helper_types.h"
 
+/**
+ * @brief create new allocate_helper instance
+ *
+ * @param capacity maximum number of calls to a function in scope
+ * @return allocate_helper instance - must be manually freed
+ */
 t_allocate_helper	*new_allocate_helper(
 						size_t capacity);
+
+/**
+ * @brief initialize allocate_helper from already items
+ *
+ * @param self allocate_helper instance to initialize
+ * @param array used to initialize self
+ * @param capacity length of array
+ */
 void				allocate_helper_init(
 						t_allocate_helper *self,
 						t_allocate_helper_item *array,
 						size_t capacity);
 
+/**
+ * @brief main - helper
+ *
+ * @param self allocate_helper instance to initialize
+ * @param dest address to store resource
+ * @param resource resource to store, NULL if failed
+ * @param cleaner function to clean resource,usually &free
+ * @return true on error, false otherwise
+ */
 bool				allocate_helper(
 						t_allocate_helper *self,
 						void **dest,
 						void *resource,
 						void (*cleaner)(void *resource));
-void				*allocate_helper_free(
-						t_allocate_helper *self,
-						void *value);
 
 #endif

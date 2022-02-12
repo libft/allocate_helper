@@ -20,6 +20,9 @@ typedef struct s_allocate_helper_item {
 	void	(*cleaner)(void *resource);
 }	t_allocate_helper_item;
 
+/**
+ * @brief allocate_helper instance
+ */
 typedef struct s_allocate_helper {
 	size_t					length;
 	size_t					capacity;

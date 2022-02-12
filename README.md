@@ -63,6 +63,7 @@ t_something *allocate_something(t_something_option *arg)
         return (NULL);
     }
     return (result);
+}
 ```
 
 … which can expressed like below with this library
@@ -89,8 +90,9 @@ t_something *allocate_something(t_something_option *arg)
         || allocate_helper(helper, &result->exists,
             something_alloc_exists(arg), something_free_exists)
     )
-        return (allocate_helper_free(helper, NULL));
-    return (allocate_helper_free(helper, result));
+        result = NULL;
+    free(helper);
+    return (result);
 }
 ```
 
