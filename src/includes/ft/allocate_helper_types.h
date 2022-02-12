@@ -10,11 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef ALLOCATE_HELPER_TYPES_H
+# define ALLOCATE_HELPER_TYPES_H
 
-int	main(int argc, char **argv)
-{
-	(void) argc;
-	(void) argv;
-	return (0);
-}
+# include <stddef.h>
+
+typedef struct s_allocate_helper_item {
+	void	*resource;
+	void	(*cleaner)(void *resource);
+}	t_allocate_helper_item;
+
+typedef struct s_allocate_helper {
+	size_t					length;
+	size_t					capacity;
+	t_allocate_helper_item	*array;
+}	t_allocate_helper;
+
+#endif

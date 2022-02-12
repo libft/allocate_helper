@@ -1,1 +1,1 @@
-NAME := name
+NAME := allocate_helper
